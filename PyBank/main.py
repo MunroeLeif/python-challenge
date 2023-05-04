@@ -2,7 +2,7 @@
 import os
 import csv 
 
-csvpath = os.path.join('..','..', 'Starter_Code', 'PyBank', 'Resources', 'budget_data.csv')
+csvpath = os.path.join('..', 'PyBank', 'Resource', 'budget_data.csv')
 
 with open(csvpath) as csvfile:
     csvreader = csv.reader(csvfile, delimiter = ',')
@@ -51,11 +51,30 @@ with open(csvpath) as csvfile:
 
 
     #print out message
-    print("Financial Analysis")
-    print("---------------------------------")
-    print(f"Total Months: {len(total_months)}")
-    print(f"Total: ${net_total}")
-    print(f"Average Change: ${average}")
-    print(f"Greatest Increase in Profits: {max_month} (${Max})")
-    print(f"Greatest Decrease in Profits: {min_month} (${Min})")
+    print(f'''
+        Financial Analysis
+        ---------------------------------
+        Total Months: {len(total_months)}
+        Total: ${net_total}
+        Average Change: ${average}
+        Greatest Increase in Profits: {max_month} (${Max})
+        Greatest Decrease in Profits: {min_month} (${Min})
+    ''')
+    
+ #Specify output path
+txt_output_path = os.path.join("analysis", "analysis.txt")
+
+ #open file
+f = open(txt_output_path, "w")
+f.write(f'''
+        Financial Analysis
+        ---------------------------------
+        Total Months: {len(total_months)}
+        Total: ${net_total}
+        Average Change: ${average}
+        Greatest Increase in Profits: {max_month} (${Max})
+        Greatest Decrease in Profits: {min_month} (${Min})
+    ''')
+f.close()        
+    
     
