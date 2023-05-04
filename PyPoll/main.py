@@ -6,23 +6,18 @@ csvpath = os.path.join('..', 'PyPoll', 'Resources', 'election_data.csv')
 
 with open(csvpath) as csvfile:
     csvreader = csv.reader(csvfile, delimiter = ',')
-    #print(csvreader)
 
     #Read and store the header row 
     header = next(csvreader)
-    #print(f"Header:{header}")
+    
 
-    #
+    #Set variables 
     data = list(csvreader)
     row_count = len(data)
-    #Set variable to hold total votes
     total_votes = []
     total_candidates = []
     tally = []
-    #data = range(0,369711)
-    #candidate_votes = {}
-    #Stockham_index = []
-    #Stockham_votes = str
+    
     
     #Get candidates and votes
     for i in range (0,row_count):
@@ -31,7 +26,7 @@ with open(csvpath) as csvfile:
         if candidate not in total_candidates:
             total_candidates.append(candidate)
     candidate_count = len(total_candidates)
-    #Total votes for each candidate
+    #Get the number of votes and percent of total votes for each candidate
     vote = []
     percentage = []
     for j in range(0, candidate_count):
@@ -42,7 +37,7 @@ with open(csvpath) as csvfile:
     
     
     
-    #Dictionary
+    #Create a dictionary to hold the candidates' votes and percent of total, as well as the winner
     won = max(vote)
     vote_breakdown = {}
     for x in range(len(total_candidates)):
@@ -50,8 +45,6 @@ with open(csvpath) as csvfile:
         if vote[x] == won :
             winner = total_candidates[x]
 
-
-    #Winner
     
             
     #Print the final message
